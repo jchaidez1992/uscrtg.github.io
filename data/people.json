@@ -5,7 +5,7 @@
     "email": "asok@usc.edu",
     "photo": "photos/asok.avif",
     "interests": ["Algebraic geometry", "Homotopy theory"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -14,7 +14,7 @@
     "email": "assaf@usc.edu",
     "photo": "photos/assaf.avif",
     "interests": ["Combinatorics", "Representation theory"],
-    "is_msrp": true,
+    "is_MSRP": true,
     "is_mathcircle": false
   },
   {
@@ -23,7 +23,7 @@
     "email": "chaidez@usc.edu",
     "photo": "photos/chaidez.avif",
     "interests": ["Symplectic topology", "Dynamical systems"],
-    "is_msrp": true,
+    "is_MSRP": true,
     "is_mathcircle": true
   },
   {
@@ -32,7 +32,7 @@
     "email": "sganatra@usc.edu",
     "photo": "photos/ganatra.jpeg",
     "interests": ["Symplectic topology", "Mirror symmetry"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -41,7 +41,7 @@
     "email": "lauda@usc.edu",
     "photo": "photos/lauda.avif",
     "interests": ["Categorification", "Low-dimensional topology"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -49,7 +49,7 @@
     "role": "Affiliated Faculty",
     "photo": "photos/haskell.png",
     "interests": ["Ergodic theory", "Math education"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": true
   },
   {
@@ -57,7 +57,7 @@
     "role": "Affiliated Faculty",
     "photo": "photos/negron.jpg",
     "interests": ["Representation theory", "Algebra"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -65,7 +65,7 @@
     "role": "Affiliated Faculty",
     "photo": "photos/siegel.avif",
     "interests": ["Symplectic topology", "Complex geometry"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -73,7 +73,7 @@
     "role": "Affiliated Faculty",
     "photo": "photos/tabing.avif",
     "interests": ["Topology", "Mathematical art"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": true
   },
   {
@@ -81,7 +81,7 @@
     "role": "Affiliated Faculty",
     "photo": "photos/tokorcheck.avif",
     "interests": ["Number theory", "Math education"],
-    "is_msrp": true,
+    "is_MSRP": true,
     "is_mathcircle": false
   },
   {
@@ -89,7 +89,8 @@
     "role": "Affiliated Faculty",
     "photo": "photos/williams.jpg",
     "interests": ["Mathematical physics", "Representation theory"],
-    "is_msrp": false,
+    "is_MSRP": false,
     "is_mathcircle": false
   }
 ]
+
