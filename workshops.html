@@ -481,7 +481,9 @@ function joinEsc(arr, sep=', '){
     Promise.all([
       loadJSON('data/people.json', FALLBACK.people),
       loadJSON('data/workshops.json', FALLBACK.events),
+      loadJSON('data/opportunities.json', FALLBACK.opportunities),
       loadJSON('data/reports.json', FALLBACK.publications),
+      loadJSON('data/activities.json', FALLBACK.activities),
     ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
       const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
@@ -744,6 +746,7 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
 
