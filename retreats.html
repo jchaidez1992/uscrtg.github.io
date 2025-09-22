@@ -540,7 +540,7 @@ function joinEsc(arr, sep=', '){
       // Init
       applyFilter();
       const input = $('#people-filter');
-      if(input){ input.addRetreatListener('input', applyFilter); }
+      if(input){ input.addEventListener('input', applyFilter); }
     }
 
 function renderRetreats(retreats){
@@ -632,9 +632,9 @@ function renderRetreats(retreats){
 
   function goto(delta){ pageIndex = Math.max(0, pageIndex + delta); renderPage(); }
 
-  if(input) input.addRetreatListener('input', ()=>{ pageIndex = 0; renderPage(); });
-  if(prev)  prev.addRetreatListener('click', ()=> goto(-1));
-  if(next)  next.addRetreatListener('click', ()=> goto(+1));
+  if(input) input.addEventListener('input', ()=>{ pageIndex = 0; renderPage(); });
+  if(prev)  prev.addEventListener('click', ()=> goto(-1));
+  if(next)  next.addEventListener('click', ()=> goto(+1));
 
   renderPage();
 }
@@ -713,6 +713,7 @@ function renderRetreats(retreats){
   </script>
 </body>
 </html>
+
 
 
 
