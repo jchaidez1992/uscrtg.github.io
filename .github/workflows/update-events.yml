@@ -1,0 +1,65 @@
+name: Nightly Localist → events.json
+
+on:
+  workflow_dispatch: {}           # allow manual run
+  schedule:
+    - cron: "0 9 * * *"           # daily 09:00 UTC (~2am PT)
+
+permissions:
+  contents: write                 # needed to commit updates
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run Localist scraper (append-only, ±7 days, RTG titles)
+        env:
+          # Override these if you like (defaults are fine for USC):
+          LOCALIST_BASE: ${{ secrets.LOCALIST_BASE }}          # e.g. https://calendar.usc.edu
+          LOCALIST_GROUP_ID: ${{ secrets.LOCALIST_GROUP_ID }}  # e.g. 7761
+          LOCALIST_PP: 100
+        run: |
+          # Use defaults if secrets are empty
+          : "${LOCALIST_BASE:=https://calendar.usc.edu}"
+          : "${LOCALIST_GROUP_ID:=7761}"
+          echo "Using $LOCALIST_BASE group_id=$LOCALIST_GROUP_ID"
+          python scripts/localist_to_events.py events.json
+
+      - name: Basic JSON sanity check
+        run: |
+          python - << 'PY'
+          import json
+          with open("events.json","r",encoding="utf-8") as f:
+            data = json.load(f)
+          assert isinstance(data, list), "events.json must be a JSON array"
+          for i,e in enumerate(data):
+            for k in ("date","title","where","type","link"):
+              if k not in e:
+                raise AssertionError(f"Missing key '{k}' in item {i}")
+          print(f"OK: {len(data)} events")
+          PY
+
+      - name: Commit changes (only if file changed)
+        run: |
+          if git diff --quiet -- events.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name  "rtg-bot"
+          git config user.email "rtg-bot@users.noreply.github.com"
+          git add events.json
+          git commit -m "chore(events): nightly Localist sync → events.json [skip ci]"
+          git push
