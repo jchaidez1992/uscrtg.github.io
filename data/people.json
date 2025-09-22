@@ -30,7 +30,7 @@
     "name": "Sheel Ganatra",
     "role": "Principal Investigator",
     "email": "sganatra@usc.edu",
-    "photo": "photos/ganatra.jpeg",
+    "photo": "photos/ganatra.jpg",
     "interests": ["Symplectic topology", "Mirror symmetry"],
     "is_MSRP": false,
     "is_mathcircle": false
@@ -93,5 +93,6 @@
     "is_mathcircle": false
   }
 ]
+
 
 
