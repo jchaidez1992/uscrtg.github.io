@@ -179,12 +179,12 @@
 
 
     /* Activities */
-    .activities-grid{display:grid; gap:var(--gap); grid-template-columns:1fr; }
+    .workshops-grid{display:grid; gap:var(--gap); grid-template-columns:1fr; }
     @media (min-width:900px){
       .hero-grid{grid-template-columns:1.5fr .6fr}
-      .activities-grid{grid-template-columns:1fr 1fr}
+      .workshops-grid{grid-template-columns:1fr 1fr}
     }
-    .activities-body{min-height:120px}
+    .workshops-body{min-height:120px}
     .dashed{border:1px dashed #d1d5db; background:#fff}
 
     .event-desc{
@@ -201,13 +201,13 @@
 
 
     /* Make activity cards flex columns */
-    .activities-grid .card {
+    .workshops-grid .card {
     display: flex;
     flex-direction: column;
     }
 
     /* Push the button to the bottom, align left */
-    .activities-grid .card .link-btn {
+    .workshops-grid .card .link-btn {
     margin-top: auto;       /* pushes it to bottom */
     align-self: flex-start; /* left edge */
 }
@@ -241,7 +241,7 @@
         <ul>
           <li><a href="index.html">RTG Homepage</a></li>
           <li><a href="#events">Workshops</a></li>
-          <li><a href="#publications">Reports</a></li>
+          <li><a href="#reports">Reports</a></li>
         </ul>
       </nav>
     </div>
@@ -286,7 +286,7 @@
 </section>
 
     <!-- Publications -->
-    <section id="publications" aria-labelledby="pubs-title">
+    <section id="reports" aria-labelledby="pubs-title">
       <div class="container">
         <h2 id="pubs-title">Workshop Reports</h2>
         <div id="pubs-list" class="grid" style="grid-template-columns:1fr;"></div>
@@ -308,7 +308,7 @@
         <h4>Quick links</h4>
         <ul class="foot-list">
           <li><a href="#events">Workshops</a></li>
-          <li><a href="#publications">Reports</a></li>
+          <li><a href="#reports">Reports</a></li>
         </ul>
       </div>
     </div>
@@ -468,12 +468,12 @@ function joinEsc(arr, sep=', '){
       ],
       opportunities: [
         { title:"USC RTG Postdoctoral Fellowships", details:"The USC RTG Postdoctoral Fellowship is a 3-year position that involves research and teaching. We seek outstanding applicants with research interests in representation theory, symplectic geometry, topology  and other areas well-aligned with our group. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathjobs for more information.", link:"#people" },
-        { title:"2026 Mathematics Summer Research Program", details:"The USC RTG Mathematics Summer Research Program is a 10 week summer research program for advanced undergraduates. We seek outstanding and motivated applicants with strong course preparation in pure math. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathprograms for more information.", link:"#activities" }
+        { title:"2026 Mathematics Summer Research Program", details:"The USC RTG Mathematics Summer Research Program is a 10 week summer research program for advanced undergraduates. We seek outstanding and motivated applicants with strong course preparation in pure math. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathprograms for more information.", link:"#workshops" }
       ],
-      publications: [
+      reports: [
         { citation:"Coming soon!", link:"#"}
       ],
-      activitiesMd: [
+      workshopsMd: [
       ].join("\n")
     };
 
@@ -482,10 +482,10 @@ function joinEsc(arr, sep=', '){
       loadJSON('data/people.json', FALLBACK.people),
       loadJSON('data/workshops.json', FALLBACK.events),
       loadJSON('data/opportunities.json', FALLBACK.opportunities),
-      loadJSON('data/reports.json', FALLBACK.publications),
-      loadJSON('data/activities.json', FALLBACK.activities),
-    ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
-      const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
+      loadJSON('data/reports.json', FALLBACK.reports),
+      loadJSON('data/workshops.json', FALLBACK.workshops),
+    ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, workshopsRes])=>{
+      const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, workshopsRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
 
       // Render sections with guards
@@ -494,7 +494,7 @@ function joinEsc(arr, sep=', '){
       renderEvents(eventsRes.data);
       renderOpps(oppsRes.data);
       renderPubs(pubsRes.data);
-      renderActivities(activitiesRes);
+      renderActivities(workshopsRes);
 
       buildFooterContacts(peopleRes.data);
       setCopyright();
@@ -682,17 +682,17 @@ function renderEvents(events){
           <span class="muted">${escapeHtml(p.citation||'')}</span>
           ${p.link?`<a class="link-btn" href="${p.link}" target="_blank" rel="noopener">Link</a>`:''}
         </div>
-      `).join('') || `<div class="muted">No publications listed.</div>`;
+      `).join('') || `<div class="muted">No reports listed.</div>`;
     }
 
-    function renderActivities(activitiesRes){
-      const body = $('#activities-body'); if(!body) return;
-      if(activitiesRes.from === 'fallback'){
+    function renderActivities(workshopsRes){
+      const body = $('#workshops-body'); if(!body) return;
+      if(workshopsRes.from === 'fallback'){
         body.innerHTML = `
-          <div style="margin-top:8px">${mdToHtml(activitiesRes.data)}</div>
+          <div style="margin-top:8px">${mdToHtml(workshopsRes.data)}</div>
         `;
       } else {
-        body.innerHTML = mdToHtml(activitiesRes.data);
+        body.innerHTML = mdToHtml(workshopsRes.data);
       }
     }
 
@@ -746,6 +746,7 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
 
