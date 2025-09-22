@@ -1,10 +1,10 @@
 [{
-    "start": "2025-11-08",           // ISO (YYYY-MM-DD) or full datetime
-    "end":   "2025-11-10",           // optional; if missing, treated as single-day
+    "start": "2025-11-08",           
+    "end":   "2025-11-10",         
     "title": "RTG Workshop on Symplectic and Hyperbolic Dynamics",
     "where": "KAP 414",
     "type":  "Workshop",
     "link":  "#",
     "desc":  "This workshop is focused on the emerging interactions between symplectic and hyperbolic dynamics.",
-    "participants": ["Julian Chaidez (USC)", "Thomas Massoni (Stanford)", "Jonathan Zung (Georgia Tech)", "Thomas Barthelme (Queens)"]   // optional list
+    "participants": ["Julian Chaidez (USC)", "Thomas Massoni (Stanford)", "Jonathan Zung (Georgia Tech)", "Thomas Barthelme (Queens)"]  
   }]
