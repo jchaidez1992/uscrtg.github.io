@@ -62,6 +62,9 @@
     }
     nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
 
+    /* Hides nav on phone */
+    @media (max-width: 600px) {header nav {display: none;}}
+
     /* Hero */
     .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
     .hero-grid{display:grid; gap:var(--gap-lg); grid-template-columns:1fr; padding:28px 0}
@@ -653,5 +656,6 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
