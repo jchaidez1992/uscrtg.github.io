@@ -159,6 +159,19 @@
   display:block;
 }
 
+/* Extra breathing room in the header on mobile */
+@media (max-width: 600px) {
+  header .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
 
     /* Events */
     .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px}
@@ -773,4 +786,5 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
