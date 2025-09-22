@@ -36,6 +36,7 @@
       position:fixed; left:16px; top:16px; width:auto; height:auto; padding:8px 12px;
       background:#fff; border:2px solid var(--usc-cardinal); border-radius:var(--radius); z-index:10000;
     }
+    
     /* Header */
     header{
       position:sticky; top:0; z-index:999; background:var(--usc-gold); box-shadow:var(--shadow);
@@ -61,6 +62,9 @@
       color:#111827; font-weight:600; text-decoration:none; border:1px solid rgba(0,0,0,.06);
     }
     nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
+
+         /* Hides nav on phone */
+    @media (max-width: 600px) {header nav {display: none;}}
 
     /* Hero */
     .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
@@ -676,5 +680,6 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
