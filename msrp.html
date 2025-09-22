@@ -145,10 +145,28 @@
     .tag{font-size:.8rem; padding:4px 8px; border:1px solid var(--usc-cardinal); color:var(--usc-cardinal); border-radius:var(--radius); background:#fff}
 
     /* Person photo (optional) */
-    .person-photo{
-      width:235px; height:235px; object-fit:cover; border-radius:var(--radius);
-      display:block; margin-bottom:10px; background:#f3f4f6; /* neutral bg while loading */
-    }
+    .person-photo {
+  width: 100%;          /* fill the card width on mobile */
+  height: auto;         /* keep aspect ratio */
+  max-width: 235px;     /* don’t let it get too huge on desktop */
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin-bottom: 10px;
+  background:#f3f4f6;
+  display:block;
+}
+
+/* Extra breathing room in the header on mobile */
+@media (max-width: 600px) {
+  header .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 
     /* Events */
     .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px}
@@ -658,4 +676,5 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
