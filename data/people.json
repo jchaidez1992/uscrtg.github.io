@@ -11,7 +11,7 @@
   {
     "name": "Sami Assaf",
     "role": "Principal Investigator",
-    "email": "assaf@usc.edu",
+    "email": "shassaf@usc.edu",
     "photo": "photos/assaf.avif",
     "interests": ["Combinatorics", "Representation theory"],
     "is_MSRP": false,
@@ -19,17 +19,17 @@
   },
   {
     "name": "Julian Chaidez",
-    "role": "Principal Investigator",
-    "email": "chaidez@usc.edu",
+    "role": "Principal Investigator & MSRP Director",
+    "email": "julian.chaidez@usc.edu",
     "photo": "photos/chaidez.avif",
-    "interests": ["Symplectic topology", "Dynamical systems"],
+    "interests": ["Symplectic topology", "Dynamics"],
     "is_MSRP": true,
     "is_mathcircle": true
   },
   {
     "name": "Sheel Ganatra",
     "role": "Principal Investigator",
-    "email": "sganatra@usc.edu",
+    "email": "sheel.ganatra@usc.edu",
     "photo": "photos/ganatra.jpg",
     "interests": ["Symplectic topology", "Mirror symmetry"],
     "is_MSRP": false,
@@ -46,7 +46,7 @@
   },
   {
     "name": "Cymra Haskell",
-    "role": "Affiliated Faculty",
+    "role": "Math Teachers Circle Director",
     "photo": "photos/haskell.png",
     "interests": ["Ergodic theory", "Math education"],
     "is_MSRP": false,
@@ -93,6 +93,7 @@
     "is_mathcircle": false
   }
 ]
+
 
 
 
