@@ -105,7 +105,7 @@
       display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 18px;
     }
 
-.people-controls .events-nav {
+.people-controls .workshops-nav {
   margin-left: auto;      /* push to the right */
   display: flex;
   gap: 8px;
@@ -122,12 +122,12 @@
       display:grid; gap:var(--gap); grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
     }
 
-    /* Make Events cards span full width */
-    #events-grid {
+    /* Make Workshops cards span full width */
+    #workshops-grid {
     display: block; /* remove the grid layout */
     }
 
-    #events-grid .card {
+    #workshops-grid .card {
     width: 97%;
     margin-bottom: var(--gap);
     }
@@ -164,11 +164,11 @@
   }
 }
 
-    /* Events */
-    .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px; font-size: 1.5rem; line-height: 1.3;}
-    .event-meta{color:#374151; font-size:.95rem; margin-bottom:8px}
+    /* Workshops */
+    .workshop-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px; font-size: 1.5rem; line-height: 1.3;}
+    .workshop-meta{color:#374151; font-size:.95rem; margin-bottom:8px}
 
-    /* Opportunities & Publications */
+    /* Opportunities & Reports */
     .row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
     .link-btn{
       display:inline-block; padding:6px 10px; border:1px solid var(--usc-cardinal); color:var(--usc-cardinal);
@@ -187,16 +187,16 @@
     .workshops-body{min-height:120px}
     .dashed{border:1px dashed #d1d5db; background:#fff}
 
-    .event-desc{
+    .workshop-desc{
   margin: 8px 0 8px;
   color: var(--ink);
 }
-.event-participants{
+.workshop-participants{
   margin: 0 0 10px 1.25rem;
   padding: 0;
   list-style: disc;
 }
-.event-participants li{ margin: 4px 0; }
+.workshop-participants li{ margin: 4px 0; }
 
 
 
@@ -240,7 +240,7 @@
       <nav>
         <ul>
           <li><a href="index.html">RTG Homepage</a></li>
-          <li><a href="#events">Workshops</a></li>
+          <li><a href="#workshops">Workshops</a></li>
           <li><a href="#reports">Reports</a></li>
         </ul>
       </nav>
@@ -255,7 +255,7 @@
           <h1>RTG Current Developments Mini-Workshops</h1>
           <p class="lead">Department of Mathematics • University of Southern California</p>
           <p class="p" id="hero-summary">Welcome to the homepage of the RTG Current Development Mini-Workshops at USC. These workshops support up to four researchers for short, intensive periods of lectures, problem sessions and research at USC, in collaborations with RTG personnel. This page hosts workshop summaries and post-workshop reports. We are gratefully supported by the National Science Foundation under award DMS-2446019. </p>
-          <a class="btn btn-outline" href="#events" role="button" aria-label="Jump to upcoming events">Recent and upcoming workshops</a>
+          <a class="btn btn-outline" href="#workshops" role="button" aria-label="Jump to upcoming workshops">Recent and upcoming workshops</a>
         </div>
         <aside class="card" aria-labelledby="news-title">
           <h3 id="news-title">News &amp; Announcements</h3>
@@ -264,32 +264,32 @@
       </div>
     </section>
 
-<section id="events" aria-labelledby="events-title">
+<section id="workshops" aria-labelledby="workshops-title">
   <div class="container">
-    <h2 id="events-title">Workshops</h2>
+    <h2 id="workshops-title">Workshops</h2>
 
 <div class="people-controls">
-  <label for="events-filter" class="sr-only">Filter events</label>
-  <input id="events-filter" class="input" type="search"
+  <label for="workshops-filter" class="sr-only">Filter workshops</label>
+  <input id="workshops-filter" class="input" type="search"
          placeholder="Filter by title, type, location, or date…">
-  <span id="events-count" class="pill">0 shown</span>
+  <span id="workshops-count" class="pill">0 shown</span>
 
   <!-- pager buttons now inline -->
-  <div class="events-nav">
-    <button id="events-prev" class="link-btn" type="button" aria-label="Previous page">‹ Prev</button>
-    <button id="events-next" class="link-btn" type="button" aria-label="Next page">Next ›</button>
+  <div class="workshops-nav">
+    <button id="workshops-prev" class="link-btn" type="button" aria-label="Previous page">‹ Prev</button>
+    <button id="workshops-next" class="link-btn" type="button" aria-label="Next page">Next ›</button>
   </div>
 </div>
 
-    <div id="events-grid" class="grid" aria-live="polite"></div>
+    <div id="workshops-grid" class="grid" aria-live="polite"></div>
   </div>
 </section>
 
-    <!-- Publications -->
-    <section id="reports" aria-labelledby="pubs-title">
+    <!-- Reports -->
+    <section id="reports" aria-labelledby="Reports-title">
       <div class="container">
-        <h2 id="pubs-title">Workshop Reports</h2>
-        <div id="pubs-list" class="grid" style="grid-template-columns:1fr;"></div>
+        <h2 id="Reports-title">Workshop Reports</h2>
+        <div id="Reports-list" class="grid" style="grid-template-columns:1fr;"></div>
       </div>
     </section>
 
@@ -307,7 +307,7 @@
       <div class="foot-col">
         <h4>Quick links</h4>
         <ul class="foot-list">
-          <li><a href="#events">Workshops</a></li>
+          <li><a href="#workshops">Workshops</a></li>
           <li><a href="#reports">Reports</a></li>
         </ul>
       </div>
@@ -434,7 +434,7 @@ function joinEsc(arr, sep=', '){
         { name:"Paul Tokorcheck", role:"Affiliated Faculty", photo: "photos/tokorcheck.avif", interests:["Number theory","Math education"] },
         { name:"Harold Williams", role:"Affiliated Faculty", photo: "photos/williams.jpg", interests:["Mathematical physics","Representation theory"] },
       ],
-      events: [
+      workshops: [
           {
     "start": "2025-11-08",           // ISO (YYYY-MM-DD) or full datetime
     "end":   "2025-11-10",           // optional; if missing, treated as single-day
@@ -480,39 +480,39 @@ function joinEsc(arr, sep=', '){
     // ---------- Load all content ----------
     Promise.all([
       loadJSON('data/people.json', FALLBACK.people),
-      loadJSON('data/workshops.json', FALLBACK.events),
-      loadJSON('data/opportunities.json', FALLBACK.opportunities),
-      loadJSON('data/reports.json', FALLBACK.reports),
       loadJSON('data/workshops.json', FALLBACK.workshops),
-    ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, workshopsRes])=>{
-      const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, workshopsRes].some(r=>r.from==='fallback');
+      loadJSON('data/opportunities.json', FALLBACK.opportunities),
+      loadJSON('data/workshop_reports.json', FALLBACK.reports),
+      loadJSON('data/workshops.json', FALLBACK.workshops),
+    ]).then(([peopleRes, workshopsRes, oppsRes, ReportsRes, workshopsRes])=>{
+      const usedFallback = [peopleRes, workshopsRes, oppsRes, ReportsRes, workshopsRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
 
       // Render sections with guards
-      renderNews(eventsRes.data);
+      renderNews(workshopsRes.data);
       renderPeople(peopleRes.data);
-      renderEvents(eventsRes.data);
+      renderWorkshops(workshopsRes.data);
       renderOpps(oppsRes.data);
-      renderPubs(pubsRes.data);
+      renderReports(ReportsRes.data);
       renderActivities(workshopsRes);
 
       buildFooterContacts(peopleRes.data);
       setCopyright();
 
       // Self-tests
-      selfTests({people:peopleRes.data, events:eventsRes.data, usedFallback});
+      selfTests({people:peopleRes.data, workshops:workshopsRes.data, usedFallback});
     });
 
     // ---------- Renderers ----------
-    function renderNews(events){
+    function renderNews(workshops){
       const list = $('#news-list'); if(!list) return;
-      const items = [...events]
+      const items = [...workshops]
         .filter(e=>e && e.date)
         .sort((a,b)=> new Date(b.date)-new Date(a.date))
         .slice(0,3);
       list.innerHTML = items.map(e=>`
         <div class="news-item">
-          <span class="title">${escapeHtml(e.title || "Event")}</span>
+          <span class="title">${escapeHtml(e.title || "Workshop")}</span>
           <span class="date">${fmt(e.date)}</span>
         </div>
       `).join('') || `<div class="muted">No announcements yet.</div>`;
@@ -562,21 +562,21 @@ function joinEsc(arr, sep=', '){
       // Init
       applyFilter();
       const input = $('#people-filter');
-      if(input){ input.addEventListener('input', applyFilter); }
+      if(input){ input.addWorkshopListener('input', applyFilter); }
     }
 
-function renderEvents(events){
-  const grid   = $('#events-grid');      if(!grid) return;
-  const count  = $('#events-count');     // optional pill in the filter bar
-  const input  = $('#events-filter');    // optional search box
-  const prev   = $('#events-prev');      // optional pager buttons
-  const next   = $('#events-next');
+function renderWorkshops(workshops){
+  const grid   = $('#workshops-grid');      if(!grid) return;
+  const count  = $('#workshops-count');     // optional pill in the filter bar
+  const input  = $('#workshops-filter');    // optional search box
+  const prev   = $('#workshops-prev');      // optional pager buttons
+  const next   = $('#workshops-next');
 
   const PAGE_SIZE = 2; // now 2 per page
   let pageIndex = 0;
 
   // Normalize + sort newest → oldest (prefer start/end, fallback to date)
-  const normalized = (events||[]).map(e=>{
+  const normalized = (workshops||[]).map(e=>{
     const start = e.start || e.date || '';
     const end   = e.end   || '';
     const _start = new Date(start + (/(T|Z)/.test(start||'')?'':'T00:00:00'));
@@ -604,11 +604,11 @@ function renderEvents(events){
 
   function card(e){
     const meta = [dateText(e), e.type||null, e.where||null].filter(Boolean).join(' • ');
-    const descHtml = e.desc ? `<p class="event-desc">${escapeHtml(e.desc)}</p>` : '';
+    const descHtml = e.desc ? `<p class="workshop-desc">${escapeHtml(e.desc)}</p>` : '';
     const partHtml = (Array.isArray(e.participants) && e.participants.length)
-      ? `<div class="event-participants-block">
+      ? `<div class="workshop-participants-block">
            <strong>Invited Researchers:</strong>
-           <ul class="event-participants">
+           <ul class="workshop-participants">
              ${e.participants.map(n=>`<li>${escapeHtml(n)}</li>`).join('')}
            </ul>
          </div>`
@@ -617,8 +617,8 @@ function renderEvents(events){
     return `
       <article class="card" style="display:flex;flex-direction:column;gap:6px;">
         <div>
-          <div class="event-title">${escapeHtml(e.title||'Event')}</div>
-          <div class="event-meta">${escapeHtml(meta)}</div>
+          <div class="workshop-title">${escapeHtml(e.title||'Workshop')}</div>
+          <div class="workshop-meta">${escapeHtml(meta)}</div>
           ${descHtml}
           ${partHtml}
         </div>
@@ -641,7 +641,7 @@ function renderEvents(events){
     const start = pageIndex * PAGE_SIZE;
     const pageItems = filtered.slice(start, start + PAGE_SIZE);
 
-    grid.innerHTML = pageItems.map(card).join('') || `<div class="muted">No events match.</div>`;
+    grid.innerHTML = pageItems.map(card).join('') || `<div class="muted">No workshops match.</div>`;
 
     if(count){
       count.textContent = filtered.length
@@ -654,9 +654,9 @@ function renderEvents(events){
 
   function goto(delta){ pageIndex = Math.max(0, pageIndex + delta); renderPage(); }
 
-  if(input) input.addEventListener('input', ()=>{ pageIndex = 0; renderPage(); });
-  if(prev)  prev.addEventListener('click', ()=> goto(-1));
-  if(next)  next.addEventListener('click', ()=> goto(+1));
+  if(input) input.addWorkshopListener('input', ()=>{ pageIndex = 0; renderPage(); });
+  if(prev)  prev.addWorkshopListener('click', ()=> goto(-1));
+  if(next)  next.addWorkshopListener('click', ()=> goto(+1));
 
   renderPage();
 }
@@ -675,9 +675,9 @@ function renderEvents(events){
       `).join('') || `<div class="muted">No opportunities available.</div>`;
     }
 
-    function renderPubs(pubs){
-      const list = $('#pubs-list'); if(!list) return;
-      list.innerHTML = (pubs||[]).map(p=>`
+    function renderReports(Reports){
+      const list = $('#Reports-list'); if(!list) return;
+      list.innerHTML = (Reports||[]).map(p=>`
         <div class="pub">
           <span class="muted">${escapeHtml(p.citation||'')}</span>
           ${p.link?`<a class="link-btn" href="${p.link}" target="_blank" rel="noopener">Link</a>`:''}
@@ -722,13 +722,13 @@ function renderEvents(events){
     }
 
     // ---------- Self-tests ----------
-    function selfTests({people, events, usedFallback}){
+    function selfTests({people, workshops, usedFallback}){
       const tests = [];
       tests.push({name:'Color token: cardinal', pass: getComputedStyle(document.documentElement).getPropertyValue('--usc-cardinal').trim()==='#990000'});
       tests.push({name:'Color token: gold', pass: getComputedStyle(document.documentElement).getPropertyValue('--usc-gold').trim()==='#FFCC00'});
       tests.push({name:'People length ≥ 5', pass: Array.isArray(people) && people.length>=5});
-      tests.push({name:'Events length ≥ 1', pass: Array.isArray(events) && events.length>=1});
-      tests.push({name:'Event dates parse', pass: Array.isArray(events) && events.every(e=>!Number.isNaN(new Date(e.date).valueOf()))});
+      tests.push({name:'Workshops length ≥ 1', pass: Array.isArray(workshops) && workshops.length>=1});
+      tests.push({name:'Workshop dates parse', pass: Array.isArray(workshops) && workshops.every(e=>!Number.isNaN(new Date(e.date).valueOf()))});
       // Build contacts same way as footer
       const regex = /\b(PI|Principal Investigator)\b/i;
       const piCount = (people||[]).map(p=>({...p, role: normalizeRole(p.role)})).filter(p=>typeof p.role==='string' && regex.test(p.role)).length;
@@ -746,6 +746,7 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
 
