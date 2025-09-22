@@ -463,9 +463,8 @@ function joinEsc(arr, sep=', '){
       loadJSON('data/retreats.json', FALLBACK.retreats),
       loadJSON('data/opportunities.json', FALLBACK.opportunities),
       loadJSON('data/retreat_reports.json', FALLBACK.reports),
-      loadJSON('data/retreats.json', FALLBACK.retreats),
-    ]).then(([peopleRes, retreatsRes, oppsRes, reportsRes, retreatsRes])=>{
-      const usedFallback = [peopleRes, retreatsRes, oppsRes, reportsRes, retreatsRes].some(r=>r.from==='fallback');
+    ]).then(([peopleRes, retreatsRes, oppsRes, reportsRes])=>{
+      const usedFallback = [peopleRes, retreatsRes, oppsRes, reportsRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
 
       // Render sections with guards
@@ -474,7 +473,6 @@ function joinEsc(arr, sep=', '){
       renderRetreats(retreatsRes.data);
       renderOpps(oppsRes.data);
       renderReports(reportsRes.data);
-      renderActivities(retreatsRes);
 
       buildFooterContacts(peopleRes.data);
       setCopyright();
@@ -665,17 +663,6 @@ function renderRetreats(retreats){
       `).join('') || `<div class="muted">No reports listed.</div>`;
     }
 
-    function renderActivities(retreatsRes){
-      const body = $('#retreats-body'); if(!body) return;
-      if(retreatsRes.from === 'fallback'){
-        body.innerHTML = `
-          <div style="margin-top:8px">${mdToHtml(retreatsRes.data)}</div>
-        `;
-      } else {
-        body.innerHTML = mdToHtml(retreatsRes.data);
-      }
-    }
-
     function buildFooterContacts(people){
       const ul = $('#pi-contacts'); if(!ul) return;
       const regex = /\b(PI|Principal Investigator)\b/i;
@@ -726,6 +713,7 @@ function renderRetreats(retreats){
   </script>
 </body>
 </html>
+
 
 
 
