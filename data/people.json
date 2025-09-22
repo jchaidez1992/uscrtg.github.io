@@ -1,5 +1,4 @@
-[
-        { name:"Aravind Asok", role:"Principal Investigator", email:"asok@usc.edu", photo: "photos/asok.avif", interests:["Algebraic geometry","Homotopy theory"], is_msrp=false,is_mathcircle=false },
+{ { name:"Aravind Asok", role:"Principal Investigator", email:"asok@usc.edu", photo: "photos/asok.avif", interests:["Algebraic geometry","Homotopy theory"], is_msrp=false,is_mathcircle=false },
         { name:"Sami Assaf", role:"Principal Investigator", email:"assaf@usc.edu", photo: "photos/assaf.avif", interests:["Combinatorics","Representation theory"], is_msrp=true,is_mathcircle=false },
         { name:"Julian Chaidez", role:"Principal Investigator", email:"chaidez@usc.edu", photo: "photos/chaidez.avif", interests:["Symplectic topology","Dynamical systems"], is_msrp=true,is_mathcircle=true},
         { name:"Sheel Ganatra", role:"Principal Investigator", email:"sganatra@usc.edu", photo: "photos/ganatra.jpeg", interests:["Symplectic topology","Mirror symmetry"], is_msrp=false,is_mathcircle=false },
@@ -9,8 +8,7 @@
         { name:"Kyler Siegel", role:"Affiliated Faculty", photo: "photos/siegel.avif", interests:["Symplectic topology","Complex geometry"], is_msrp=false,is_mathcircle=false},
         { name:"Alicia Tabing", role:"Affiliated Faculty", photo: "photos/tabing.avif", interests:["Topology","Mathematical art"], is_msrp=false,is_mathcircle=true },
         { name:"Paul Tokorcheck", role:"Affiliated Faculty", photo: "photos/tokorcheck.avif", interests:["Number theory","Math education"], is_msrp=true,is_mathcircle=false },
-        { name:"Harold Williams", role:"Affiliated Faculty", photo: "photos/williams.jpg", interests:["Mathematical physics","Representation theory"], is_msrp=false,is_mathcircle=false },
+        { name:"Harold Williams", role:"Affiliated Faculty", photo: "photos/williams.jpg", interests:["Mathematical physics","Representation theory"], is_msrp=false,is_mathcircle=false }}
 
-      ]
 
 
