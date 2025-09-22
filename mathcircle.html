@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RTG: Geometry and Representation Theory at USC</title>
+  <meta name="description" content="RTG: Geometry and Representation Theory at USC — Department of Mathematics, University of Southern California." />
+  <style>
+    :root{
+      --usc-cardinal:#990000; /* PMS 201C */
+      --usc-gold:#FFCC00;     /* PMS 123C */
+      --muted:#6b7280;        /* gray-500 */
+      --ink:#1f2937;          /* gray-800 */
+      --bg:#ffffff;
+      --bg-alt:#f9f6ef;
+      --radius:4px;
+      --gap:16px;
+      --gap-lg:24px;
+      --shadow:0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.1);
+      --maxw:1100px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:var(--bg);
+      line-height:1.5;
+    }
+    a{color:var(--usc-cardinal); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:0 16px}
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      position:fixed; left:16px; top:16px; width:auto; height:auto; padding:8px 12px;
+      background:#fff; border:2px solid var(--usc-cardinal); border-radius:var(--radius); z-index:10000;
+    }
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:999; background:var(--usc-gold); box-shadow:var(--shadow);
+    }
+    .header-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand-tile{
+  width:44px;           /* fixed square instead of padded text */
+  height:44px;
+  padding:0;            /* remove text padding */
+  background: url("photos/rtg-badge.png") center/cover no-repeat;
+  color:transparent;    /* hide the “RTG” letters */
+  border-radius: var(--radius);
+  box-shadow: transparent;
+  border:0px solid rgba(0,0,0,.06);
+  display:inline-block;}
+    .brand-lines{display:flex; flex-direction:column}
+    .brand-lines .line1{font-size:.825rem; color:#3f3f46; opacity:.9}
+    .brand-lines .line2{font-weight:700}
+    nav ul{display:flex; gap:10px; list-style:none; margin:0; padding:0; flex-wrap:wrap}
+    nav a{
+      display:inline-block; padding:8px 10px; border-radius:var(--radius);
+      color:#111827; font-weight:600; text-decoration:none; border:1px solid rgba(0,0,0,.06);
+    }
+    nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
+
+    /* Hero */
+    .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
+    .hero-grid{display:grid; gap:var(--gap-lg); grid-template-columns:1fr; padding:28px 0}
+    .hero h1{color:var(--usc-cardinal); margin:0 0 8px}
+    .lead{color:var(--muted); margin:0 0 8px}
+    .p{margin:0 0 16px}
+    .btn{
+      display:inline-block; padding:10px 14px; font-weight:700; border-radius:var(--radius);
+      border:1px solid transparent; background:var(--usc-cardinal); color:#fff; text-decoration:none;
+    }
+    .btn:hover{text-decoration:none; filter:brightness(.95)}
+    .btn-outline{
+      background:#fff; color:var(--usc-cardinal); border:1px solid var(--usc-cardinal);
+    }
+    .card{
+      background:#fff; border:1px solid #e5e7eb; border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:14px;
+    }
+    .card h3{margin:0 0 8px}
+    .news-list{display:grid; gap:8px}
+    .news-item{display:flex; flex-direction:column; gap:2px}
+    .news-item .title{font-weight:600}
+    .news-item .date{font-size:.9rem; color:var(--muted)}
+    .notice{
+      margin-top:10px; font-size:.9rem; color:var(--muted);
+      border:1px dashed #d1d5db; border-radius:var(--radius); padding:8px 10px; background:#fff;
+    }
+
+    /* Sections */
+    section{padding:36px 0}
+    .kicker{color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:.8rem}
+    h2{margin:.15rem 0 .75rem}
+    .muted{color:var(--muted)}
+    .section-desc{margin-top:-.25rem; margin-bottom:1rem; color:var(--muted)}
+
+    /* People */
+    .people-controls{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 18px;
+    }
+
+.people-controls .events-nav {
+  margin-left: auto;      /* push to the right */
+  display: flex;
+  gap: 8px;
+}
+    .input{
+      border:1px solid #d1d5db; border-radius:var(--radius); padding:10px 12px; min-width:260px;
+      outline-offset:2px;
+    }
+    .pill{
+      display:inline-block; background:#fff; border:1px solid #d1d5db; padding:6px 10px; border-radius:var(--radius);
+      font-size:.9rem; color:#374151;
+    }
+    .grid{
+      display:grid; gap:var(--gap); grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    }
+
+    #opps-grid {grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));}
+
+    .person{display:block}
+    .person h3{margin:0 0 4px; font-size:1.05rem}
+    .role{font-size:.95rem; color:#374151; margin-bottom:6px}
+    .tags{display:flex; flex-wrap:wrap; gap:6px}
+    .tag{font-size:.8rem; padding:4px 8px; border:1px solid var(--usc-cardinal); color:var(--usc-cardinal); border-radius:var(--radius); background:#fff}
+
+    /* Person photo (optional) */
+    .person-photo{
+      width:235px; height:235px; object-fit:cover; border-radius:var(--radius);
+      display:block; margin-bottom:10px; background:#f3f4f6; /* neutral bg while loading */
+    }
+
+    /* Events */
+    .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px}
+    .event-meta{color:#374151; font-size:.95rem; margin-bottom:8px}
+
+    /* Opportunities & Publications */
+    .row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .link-btn{
+      display:inline-block; padding:6px 10px; border:1px solid var(--usc-cardinal); color:var(--usc-cardinal);
+      background:#fff; border-radius:var(--radius); font-weight:600; text-decoration:none;
+    }
+    .pub{display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #e5e7eb; border-radius:var(--radius); padding:10px 12px; background:#fff}
+
+
+
+    /* Activities */
+    .activities-grid{display:grid; gap:var(--gap); grid-template-columns:1fr; }
+    @media (min-width:900px){
+      .hero-grid{grid-template-columns:1.5fr .6fr}
+      .activities-grid{grid-template-columns:1fr 1fr}
+    }
+    .activities-body{min-height:120px}
+    .dashed{border:1px dashed #d1d5db; background:#fff}
+
+
+    /* Make activity cards flex columns */
+    .activities-grid .card {
+    display: flex;
+    flex-direction: column;
+    }
+
+    /* Push the button to the bottom, align left */
+    .activities-grid .card .link-btn {
+    margin-top: auto;       /* pushes it to bottom */
+    align-self: flex-start; /* left edge */
+}
+
+    /* Footer */
+    footer{background:#fafafa; border-top:1px solid #e5e7eb}
+    .foot-grid{display:grid; gap:var(--gap); grid-template-columns:1fr; padding:24px 0}
+    .foot-col h4{margin:.25rem 0 .5rem}
+    .foot-list{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+    .foot-bottom{border-top:1px solid #e5e7eb; padding:12px 0; font-size:.95rem; color:var(--muted)}
+    @media (min-width:900px){
+      .foot-grid{grid-template-columns:1.1fr .9fr .9fr}
+    }
+    /* Utility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container header-inner" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <span class="brand-tile" aria-hidden="true">RTG</span>
+        <div class="brand-lines">
+          <span class="line1">University of Southern California</span>
+          <span class="line2">RTG: Geometry and Representation Theory at USC</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">RTG Homepage</a></li>
+          <li><a href="#people">People</a></li>
+          <li><a href="#activities">Activities</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Math Teachers Circle at USC</h1>
+          <p class="lead">Department of Mathematics • University of Southern California</p>
+          <p class="p" id="hero-summary">The Math Teachers Circle is a long running program aimed at K-12 math teachers in the Los Angeles area. Each meeting of the circle consists of dinner and mingling, followed by a mathematical activity designed by the organizers. </p> <p> This page hosts activity materials and other math circle information. The USC RTG project is proud to support new activities for the USC Math Circle via National Science Foundation Award DMS-2446019. </p>
+        </div>
+        <aside class="card" aria-labelledby="news-title">
+          <h3 id="news-title">Meeting Information</h3>
+          <p>The USC Math Teachers Circle typically meets on Thursdays 6-8pm, with space generously provided at the <a href="https://aimath.org/">American Institute of Mathematics</a> on the Caltech campus in Pasadena.</p> 
+
+        <p> To participate and join the mailing list, please email Cymra.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- People -->
+    <section id="people" aria-labelledby="people-title">
+      <div class="container">
+        <h2 id="people-title">People</h2>
+        <p class="section-desc">Meet our team of faculty, postdoctoral fellows and graduate student trainees.</p>
+        <div class="people-controls">
+          <label for="people-filter" class="sr-only">Filter people</label>
+          <input id="people-filter" class="input" type="search" placeholder="Filter by name, role, or interest…" />
+          <span id="people-count" class="pill">0 shown</span>
+        </div>
+        <div id="people-grid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities" aria-labelledby="activities-title">
+      <div class="container">
+        <h2 id="activities-title">Activities</h2>
+        <p class="section-desc">Learn about math circle events and activities.</p>
+        <div class="activities-grid">
+          <article class="card">
+            <h3>Classifying The Platonic Solids</h3>
+            <div id="platonic_solids" class="activities-body">
+              <p> Plato thought that the five elements were made of tiny Platonic solids. Famously, there are only five Platonic solids, but how do we know? This activity guides the participants through a proof of this fact that uses a concept from topology: the Euler characteristic. This activity was written by Julian Chaidez.</p>
+            </div>
+            <a href="mathcircle/platonic_solids.pdf" class="link-btn">Activity Materials</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-labelledby="footer-title">
+    <div class="container foot-grid">
+      <div class="foot-col">
+        <h4 id="footer-title" class="muted">USC • Department of Mathematics</h4>
+        <div class="muted">RTG: Geometry and Representation Theory at USC</div>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul id="pi-contacts" class="foot-list"></ul>
+        <div id="no-pi" class="muted" style="display:none">No PI contacts found.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick links</h4>
+        <ul class="foot-list">
+          <li><a href="index.html">RTG Homepage</a></li>
+          <li><a href="#people">People</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#opportunities">Opportunities</a></li>
+          <li><a href="#publications">Publications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container foot-bottom">
+      <span id="copyright"></span>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    // ---------- Helpers ----------
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    const safe = (el, fn) => { if(el) fn(el); };
+
+    function fmt(dateStr){
+      const d = new Date(dateStr + (dateStr.match(/T|Z/) ? '' : 'T00:00:00'));
+      if (Number.isNaN(d.valueOf())) return dateStr;
+      return d.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+    }
+
+    function mdToHtml(md){
+      if(!md) return "";
+      // Normalize newlines
+      const lines = md.replace(/\r\n?/g, '\n').split('\n');
+      let html = "", inList=false;
+      function closeList(){ if(inList){ html += '</ul>'; inList=false; } }
+      for(const raw of lines){
+        const line = raw.trimEnd();
+        if(/^###\s+/.test(line)){ closeList(); html += `<h3>${escapeHtml(line.replace(/^###\s+/,''))}</h3>`; continue; }
+        if(/^##\s+/.test(line)){ closeList(); html += `<h2>${escapeHtml(line.replace(/^##\s+/,''))}</h2>`; continue; }
+        if(/^#\s+/.test(line)){ closeList(); html += `<h1>${escapeHtml(line.replace(/^#\s+/,''))}</h1>`; continue; }
+        if(/^(\-|\*)\s+/.test(line)){
+          if(!inList){ html += '<ul>'; inList=true; }
+          html += `<li>${escapeHtml(line.replace(/^(\-|\*)\s+/,''))}</li>`;
+          continue;
+        }
+        if(line === ''){
+          closeList();
+        } else {
+          closeList();
+          html += `<p>${escapeHtml(line)}</p>`;
+        }
+      }
+      closeList();
+      return html;
+    }
+
+    function escapeHtml(s){
+      return String(s??'')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;');
+    }
+
+    async function loadJSON(path, fallback){
+      try{
+        const res = await fetch(path, {cache:'no-store'});
+        if(!res.ok) throw new Error(res.statusText);
+        const data = await res.json();
+        return {data, from:path};
+      }catch(e){
+        return {data:fallback, from:'fallback'};
+      }
+    }
+
+    async function loadText(path, fallback){
+      try{
+        const res = await fetch(path, {cache:'no-store'});
+        if(!res.ok) throw new Error(res.statusText);
+        const data = await res.text();
+        return {data, from:path};
+      }catch(e){
+        return {data:fallback, from:'fallback'};
+      }
+    }
+
+    // ---------- Fallback data (embedded) ----------
+    const FALLBACK = {
+      people: [
+        // PIs (with emails for footer; emails never shown on cards)
+        // Affiliates (omit emails)
+        { name:"Cymra Haskell", role:"Math Circle Director", photo: "photos/haskell.png", interests:["Ergodic theory","Math education"], is_mathcircle:true },
+        { name:"Alicia Tabing", role:"Math Circle Co-Director", photo: "photos/tabing.avif", interests:["Topology","Mathematical art"], is_mathcircle:true },
+        { name:"Julian Chaidez", role:"Affiliated Faculty", email:"chaidez@usc.edu", photo: "photos/chaidez.avif", interests:["Symplectic topology","Dynamical systems"], is_mathcircle:true},
+        { name:"Paul Tokorcheck", role:"Affiliated Faculty", photo: "photos/tokorcheck.avif", interests:["Number theory","Math education"], is_mathcircle:true },
+      ],
+      events: [
+        { date:"2025-09-15", title:"RTG Project Launches!", where:"USC", type:"Event", link:"#"}
+      ],
+      opportunities: [
+        { title:"USC RTG Postdoctoral Fellowships", details:"The USC RTG Postdoctoral Fellowship is a 3-year position that involves research and teaching. We seek outstanding applicants with research interests in representation theory, symplectic geometry, topology  and other areas well-aligned with our group. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathjobs for more information.", link:"#people" },
+        { title:"2026 Mathematics Summer Research Program", details:"The USC RTG Mathematics Summer Research Program is a 10 week summer research program for advanced undergraduates. We seek outstanding and motivated applicants with strong course preparation in pure math. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathprograms for more information.", link:"#activities" }
+      ],
+      publications: [
+        { citation:"Coming soon!", link:"#"}
+      ],
+      activitiesMd: [
+      ].join("\n")
+    };
+
+    // ---------- Load all content ----------
+    Promise.all([
+      loadJSON('people.json', FALLBACK.people),
+      loadJSON('events.json', FALLBACK.events),
+      loadJSON('opportunities.json', FALLBACK.opportunities),
+      loadJSON('publications.json', FALLBACK.publications),
+      loadText('activities.md', FALLBACK.activitiesMd),
+    ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
+      const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
+      if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
+
+      // Render sections with guards
+      renderNews(eventsRes.data);
+      renderPeople(peopleRes.data);
+      renderEvents(eventsRes.data);
+      renderOpps(oppsRes.data);
+      renderPubs(pubsRes.data);
+      renderActivities(activitiesRes);
+
+      buildFooterContacts(peopleRes.data);
+      setCopyright();
+
+      // Self-tests
+      selfTests({people:peopleRes.data, events:eventsRes.data, usedFallback});
+    });
+
+    // ---------- Renderers ----------
+    function renderNews(events){
+      const list = $('#news-list'); if(!list) return;
+      const items = [...events]
+        .filter(e=>e && e.date)
+        .sort((a,b)=> new Date(b.date)-new Date(a.date))
+        .slice(0,3);
+      list.innerHTML = items.map(e=>`
+        <div class="news-item">
+          <span class="title">${escapeHtml(e.title || "Event")}</span>
+          <span class="date">${fmt(e.date)}</span>
+        </div>
+      `).join('') || `<div class="muted">No announcements yet.</div>`;
+    }
+
+    function normalizeRole(role){
+      if(typeof role !== 'string') return role;
+      return role === 'PI' ? 'Principal Investigator' : role;
+    }
+
+    function renderPeople(people){
+      const grid = $('#people-grid'); if(!grid) return;
+      const count = $('#people-count');
+
+      // Only keep people where is_MSRP is true
+    const records = (people || [])
+      .filter(p => p.is_mathcircle === true)
+      .map(p => ({...p, role: normalizeRole(p.role)}));
+
+
+      function applyFilter(){
+        const q = ($('#people-filter')?.value || '').trim().toLowerCase();
+        const filtered = !q ? records : records.filter(p=>{
+          const hay = [
+            p.name||'',
+            p.role||'',
+            ...(Array.isArray(p.interests)?p.interests:[])
+          ].join(' ').toLowerCase();
+          return hay.includes(q);
+        });
+        grid.innerHTML = filtered.map(p=> personCard(p)).join('') || `<div class="muted">No people match the filter.</div>`;
+        if(count) count.textContent = `${filtered.length} shown`;
+      }
+
+      function personCard(p){
+        const tags = (Array.isArray(p.interests)?p.interests:[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(' ');
+        const hasPhoto = typeof p.photo === 'string' && p.photo.trim().length>0;
+        const imgHtml = hasPhoto
+          ? `<img src="${p.photo}" alt="Photo of ${escapeHtml(p.name||'')}" class="person-photo" loading="lazy" decoding="async">`
+          : '';
+        return `
+          <article class="card person" aria-label="${escapeHtml(p.name||'Person')}">
+            ${imgHtml}
+            <h3>${escapeHtml(p.name||'')}</h3>
+            <div class="role">${escapeHtml(p.role||'')}</div>
+            <div class="tags">${tags}</div>
+          </article>
+        `;
+      }
+
+      // Init
+      applyFilter();
+      const input = $('#people-filter');
+      if(input){ input.addEventListener('input', applyFilter); }
+    }
+
+function renderEvents(events){
+  const grid   = $('#events-grid');      if(!grid) return;
+  const count  = $('#events-count');     // may be null if you didn't add the filter pill
+  const input  = $('#events-filter');    // may be null if you didn't add the search box
+  const prev   = $('#events-prev');
+  const next   = $('#events-next');
+
+  const PAGE_SIZE = 4;
+  let pageIndex = 0;
+
+  // Normalize and sort newest → oldest
+  const recordsAll = (events || []).map(e => ({
+    ...e,
+    _date: new Date((e.date || '') + (/(T|Z)/.test(e.date||'') ? '' : 'T00:00:00'))
+  })).filter(e => !Number.isNaN(e._date.valueOf()))
+    .sort((a,b) => b._date - a._date);
+
+  // Build a lowercase haystack for text search
+  const withHay = recordsAll.map(e => ({
+    ...e,
+    __hay: [
+      e.title || '', e.type || '', e.where || '',
+      e.date || '', fmt(e.date)
+    ].join(' ').toLowerCase()
+  }));
+
+  function card(e){
+    const meta = [
+      e.date ? fmt(e.date) : null,
+      e.type || null,
+      e.where || null
+    ].filter(Boolean).join(' • ');
+    const linkBtn = e.link ? `<a class="link-btn" href="${e.link}" target="_blank" rel="noopener">Details</a>` : '';
+    return `
+      <article class="card">
+        <div class="event-title">${escapeHtml(e.title||'Event')}</div>
+        <div class="event-meta">${escapeHtml(meta)}</div>
+        ${linkBtn}
+      </article>
+    `;
+  }
+
+  function currentFiltered(){
+    const q = (input?.value || '').trim().toLowerCase();
+    return q ? withHay.filter(e => e.__hay.includes(q)) : withHay;
+  }
+
+  function totalPages(len){ return Math.max(1, Math.ceil(len / PAGE_SIZE)); }
+
+  function renderPage(){
+    const filtered = currentFiltered();
+    const pages = totalPages(filtered.length);
+    // clamp pageIndex if filter changed
+    if(pageIndex >= pages) pageIndex = pages - 1;
+
+    const start = pageIndex * PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+    grid.innerHTML = pageItems.map(card).join('') || `<div class="muted">No events match.</div>`;
+
+    if(count){
+  count.textContent = filtered.length
+    ? `Showing ${start+1}–${Math.min(start+PAGE_SIZE, filtered.length)} of ${filtered.length} • Page ${pageIndex+1} of ${pages}`
+    : `No results`;
+}
+    if(prev) prev.disabled = (pageIndex === 0 || filtered.length === 0);
+    if(next) next.disabled = (pageIndex >= pages-1 || filtered.length === 0);
+  }
+
+  function goto(delta){
+    pageIndex += delta;
+    if(pageIndex < 0) pageIndex = 0;
+    renderPage();
+  }
+
+  // Wire up events
+  if(input) input.addEventListener('input', ()=>{ pageIndex = 0; renderPage(); });
+  if(prev)  prev.addEventListener('click', ()=> goto(-1));
+  if(next)  next.addEventListener('click', ()=> goto(+1));
+
+  // First paint
+  renderPage();
+}
+
+
+
+    function renderOpps(opps){
+      const grid = $('#opps-grid'); if(!grid) return;
+      grid.innerHTML = (opps||[]).map(o=>`
+        <article class="card">
+          <div class="row">
+            <h3 style="margin:0">${escapeHtml(o.title||'Opportunity')}</h3>
+            ${o.link?`<a class="link-btn" href="${o.link}">Apply</a>`:''}
+          </div>
+          <p class="muted" style="margin:.25rem 0 0">${escapeHtml(o.details||'')}</p>
+        </article>
+      `).join('') || `<div class="muted">No opportunities available.</div>`;
+    }
+
+    function renderPubs(pubs){
+      const list = $('#pubs-list'); if(!list) return;
+      list.innerHTML = (pubs||[]).map(p=>`
+        <div class="pub">
+          <span class="muted">${escapeHtml(p.citation||'')}</span>
+          ${p.link?`<a class="link-btn" href="${p.link}" target="_blank" rel="noopener">Link</a>`:''}
+        </div>
+      `).join('') || `<div class="muted">No publications listed.</div>`;
+    }
+
+    function renderActivities(activitiesRes){
+      const body = $('#activities-body'); if(!body) return;
+      if(activitiesRes.from === 'fallback'){
+        body.innerHTML = `
+          <div style="margin-top:8px">${mdToHtml(activitiesRes.data)}</div>
+        `;
+      } else {
+        body.innerHTML = mdToHtml(activitiesRes.data);
+      }
+    }
+
+    function buildFooterContacts(people){
+      const ul = $('#pi-contacts'); if(!ul) return;
+      const regex = /\b(PI|Principal Investigator)\b/i;
+      const pis = (people||[])
+        .map(p=>({...p, role: normalizeRole(p.role)}))
+        .filter(p => typeof p.role === 'string' && regex.test(p.role));
+      if(pis.length === 0){
+        $('#no-pi') && ($('#no-pi').style.display='block');
+        return;
+      }
+      ul.innerHTML = pis.map(p=>{
+        const name = escapeHtml(p.name||'');
+        if(p.email){
+          const mail = `mailto:${encodeURIComponent(p.email)}?subject=${encodeURIComponent('RTG Inquiry')}`;
+          return `<li><a href="${mail}">${name}</a></li>`;
+        }
+        return `<li>${name}</li>`;
+      }).join('');
+    }
+
+    function setCopyright(){
+      const y = new Date().getFullYear();
+      const el = $('#copyright'); if(el) el.textContent = `© ${y} University of Southern California • Department of Mathematics`;
+    }
+
+    // ---------- Self-tests ----------
+    function selfTests({people, events, usedFallback}){
+      const tests = [];
+      tests.push({name:'Color token: cardinal', pass: getComputedStyle(document.documentElement).getPropertyValue('--usc-cardinal').trim()==='#990000'});
+      tests.push({name:'Color token: gold', pass: getComputedStyle(document.documentElement).getPropertyValue('--usc-gold').trim()==='#FFCC00'});
+      tests.push({name:'People length ≥ 5', pass: Array.isArray(people) && people.length>=5});
+      tests.push({name:'Events length ≥ 1', pass: Array.isArray(events) && events.length>=1});
+      tests.push({name:'Event dates parse', pass: Array.isArray(events) && events.every(e=>!Number.isNaN(new Date(e.date).valueOf()))});
+      // Build contacts same way as footer
+      const regex = /\b(PI|Principal Investigator)\b/i;
+      const piCount = (people||[]).map(p=>({...p, role: normalizeRole(p.role)})).filter(p=>typeof p.role==='string' && regex.test(p.role)).length;
+      tests.push({name:'Footer PI contacts ≥ 1', pass: piCount>=1});
+      if(usedFallback) tests.push({name:'Using defaults indicator shown', pass: ($('#defaults-indicator') && $('#defaults-indicator').style.display!=='none')});
+
+      console.groupCollapsed('RTG static page self-tests');
+      for(const t of tests){
+        console[t.pass ? 'log' : 'error']((t.pass?'PASS: ':'FAIL: ')+t.name);
+      }
+      console.groupEnd();
+    }
+
+  })();
+  </script>
+</body>
+</html>
