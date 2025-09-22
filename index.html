@@ -61,6 +61,9 @@
       color:#111827; font-weight:600; text-decoration:none; border:1px solid rgba(0,0,0,.06);
     }
     nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
+    
+     /* Hides nav on phone */
+    @media (max-width: 600px) {header nav {display: none;}}
 
     /* Hero */
     .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
@@ -786,6 +789,7 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
 
 
