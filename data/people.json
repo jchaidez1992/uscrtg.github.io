@@ -14,7 +14,7 @@
     "email": "assaf@usc.edu",
     "photo": "photos/assaf.avif",
     "interests": ["Combinatorics", "Representation theory"],
-    "is_MSRP": true,
+    "is_MSRP": false,
     "is_mathcircle": false
   },
   {
@@ -93,4 +93,5 @@
     "is_mathcircle": false
   }
 ]
+
 
