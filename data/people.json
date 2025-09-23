@@ -21,7 +21,7 @@
     "name": "Julian Chaidez",
     "role": "Principal Investigator & MSRP Director",
     "email": "julian.chaidez@usc.edu",
-    "photo": "photos/chaidez.avif",
+    "photo": "photos/chaidez.jpg",
     "interests": ["Symplectic topology", "Dynamics"],
     "is_MSRP": true,
     "is_mathcircle": true
@@ -93,6 +93,7 @@
     "is_mathcircle": false
   }
 ]
+
 
 
 
