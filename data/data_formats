@@ -1,0 +1,27 @@
+data formats:
+
+Workshops
+
+[{
+    "start": "2025-11-08",           
+    "end":   "2025-11-10",         
+    "title": "RTG Retreat on Algebraic Geometry and Mirror Symmetry",
+    "where": "KAP 414",
+    "type":  "Retreat",
+    "link":  "#",
+    "desc":  "This workshop is focused on recent breakthroughts in algebraic geometry motivated by mirror symmetry.",
+    "participants": ["Dan Pomerleano (U Mass Boston)", "Jeff Hicks (Aberdeen)", "Andrew Hanlon (Brown)", "Sheel Ganatra (USC)"]  
+  }]
+
+Retreats:
+
+{
+    "start": "2025-11-08",           
+    "end":   "2025-11-10",         
+    "title": "RTG Retreat on Algebraic Geometry and Mirror Symmetry",
+    "where": "KAP 414",
+    "type":  "Retreat",
+    "link":  "#",
+    "desc":  "This workshop is focused on recent breakthroughts in algebraic geometry motivated by mirror symmetry.",
+    "participants": ["Dan Pomerleano (U Mass Boston)", "Jeff Hicks (Aberdeen)", "Andrew Hanlon (Brown)", "Sheel Ganatra (USC)"]  
+  }
