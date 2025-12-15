@@ -61,9 +61,6 @@
       color:#111827; font-weight:600; text-decoration:none; border:1px solid rgba(0,0,0,.06);
     }
     nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
-    
-     /* Hides nav on phone */
-    @media (max-width: 600px) {header nav {display: none;}}
 
     /* Hero */
     .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
@@ -162,19 +159,6 @@
   display:block;
 }
 
-/* Extra breathing room in the header on mobile */
-@media (max-width: 600px) {
-  header .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .hero .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
-
 
     /* Events */
     .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px}
@@ -240,10 +224,10 @@
       <nav>
         <ul>
           <li><a href="#people">People</a></li>
-          <li><a href="#activities">Activities</a></li>
           <li><a href="#events">Seminars &amp; Events</a></li>
           <li><a href="#opportunities">Opportunities</a></li>
           <li><a href="#publications">Publications</a></li>
+          <li><a href="#activities">Activities</a></li>
         </ul>
       </nav>
     </div>
@@ -305,7 +289,7 @@
             <div id="retreat_info" class="activities-body">
               <p>The RTG Graduate Retreat is an annual cabin retreat that gathers graduate students, postdoctoral scholars and RTG faculty for four days of community building and research activities. To learn more, please visit the Retreat homepage below. </p>
             </div>
-            <a href="retreats.html" class="link-btn">Retreat Homepage</a>
+            <a href="#teachers-circle" class="link-btn">Retreat Homepage</a>
           </article>
           <article class="card">
             <h3>RTG Mathematics Summer Research Program at USC</h3>
@@ -329,7 +313,6 @@
 <section id="events" aria-labelledby="events-title">
   <div class="container">
     <h2 id="events-title">Seminars &amp; Events</h2>
-    <p class="section-desc">Learn about seminars and events organized during project.</p>
 
 <div class="people-controls">
   <label for="events-filter" class="sr-only">Filter events</label>
@@ -361,7 +344,6 @@
     <section id="publications" aria-labelledby="pubs-title">
       <div class="container">
         <h2 id="pubs-title">Publications</h2>
-        <p class="section-desc">Learn about the research produced by this project.</p>
         <div id="pubs-list" class="grid" style="grid-template-columns:1fr;"></div>
       </div>
     </section>
@@ -469,7 +451,7 @@
         { name:"Aravind Asok", role:"Principal Investigator", email:"asok@usc.edu", photo: "photos/asok.avif", interests:["Algebraic geometry","Homotopy theory"] },
         { name:"Sami Assaf", role:"Principal Investigator", email:"assaf@usc.edu", photo: "photos/assaf.avif", interests:["Combinatorics","Representation theory"] },
         { name:"Julian Chaidez", role:"Principal Investigator", email:"chaidez@usc.edu", photo: "photos/chaidez.avif", interests:["Symplectic topology","Dynamical systems"] },
-        { name:"Sheel Ganatra", role:"Principal Investigator", email:"sganatra@usc.edu", photo: "photos/ganatra.jpeg", interests:["Symplectic topology","Mirror symmetry"] },
+        { name:"Sheel Ganatra", role:"Principal Investigator", email:"sganatra@usc.edu", photo: "photos/ganatra.jpg", interests:["Symplectic topology","Mirror symmetry"] },
         { name:"Aaron Lauda", role:"Principal Investigator", email:"lauda@usc.edu", photo: "photos/lauda.avif", interests:["Categorification","Low-dimensional topology"] },
         // Affiliates (omit emails)
         { name:"Cymra Haskell", role:"Affiliated Faculty", photo: "photos/haskell.png", interests:["Ergodic theory","Math education"] },
@@ -483,8 +465,8 @@
         { date:"2025-09-15", title:"RTG Project Launches!", where:"USC", type:"Event", link:"#"}
       ],
       opportunities: [
-        { title:"USC RTG Postdoctoral Fellowships", details:"The USC RTG Postdoctoral Fellowship is a 3-year position that involves research and teaching. We seek outstanding applicants with research interests in representation theory, symplectic geometry, topology  and other areas well-aligned with our group. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Applications are expected to open by late November.", link:"#people" },
-        { title:"2026 Mathematics Summer Research Program", details:"The USC RTG Mathematics Summer Research Program is a 10 week summer research program for advanced undergraduates. We seek outstanding and motivated applicants with strong course preparation in pure math. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Applications are expected to open by late November.", link:"#activities" }
+        { title:"USC RTG Postdoctoral Fellowships", details:"USC RTG Postdoctoral Fellowships will be awarded to outstanding applicants to postdoctoral positions at USC, with research interests in representation theory, symplectic geometry, topology  and other areas well-aligned with our group. Eligible applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathjobs for more information.", link:"https://www.mathjobs.org/jobs/list/27595" },
+        { title:"2026 Mathematics Summer Research Program", details:"The USC RTG Mathematics Summer Research Program is a 10 week summer research program for advanced undergraduates. We seek outstanding and motivated applicants with strong course preparation in pure math. Applicants must be citizens, nationals, or permanent residents of the USA or its territories and possessions. Please click apply to visit Mathprograms for more information.", link:"https://www.mathprograms.org/db/programs/1843" }
       ],
       publications: [
         { citation:"Coming soon!", link:"#"}
@@ -495,11 +477,11 @@
 
     // ---------- Load all content ----------
     Promise.all([
-      loadJSON('data/people.json', FALLBACK.people),
-      loadJSON('data/events.json', FALLBACK.events),
-      loadJSON('data/opportunities.json', FALLBACK.opportunities),
-      loadJSON('data/publications.json', FALLBACK.publications),
-      loadText('data/activities.md', FALLBACK.activitiesMd),
+      loadJSON('people.json', FALLBACK.people),
+      loadJSON('events.json', FALLBACK.events),
+      loadJSON('opportunities.json', FALLBACK.opportunities),
+      loadJSON('publications.json', FALLBACK.publications),
+      loadText('activities.md', FALLBACK.activitiesMd),
     ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
       const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
@@ -658,6 +640,7 @@ function renderEvents(events){
       <article class="card">
         <div class="event-title">${escapeHtml(e.title||'Event')}</div>
         <div class="event-meta">${escapeHtml(meta)}</div>
+        ${linkBtn}
       </article>
     `;
   }
@@ -790,16 +773,4 @@ function renderEvents(events){
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
