@@ -36,7 +36,6 @@
       position:fixed; left:16px; top:16px; width:auto; height:auto; padding:8px 12px;
       background:#fff; border:2px solid var(--usc-cardinal); border-radius:var(--radius); z-index:10000;
     }
-    
     /* Header */
     header{
       position:sticky; top:0; z-index:999; background:var(--usc-gold); box-shadow:var(--shadow);
@@ -62,9 +61,6 @@
       color:#111827; font-weight:600; text-decoration:none; border:1px solid rgba(0,0,0,.06);
     }
     nav a:hover{background:rgba(0,0,0,.06); text-decoration:none}
-
-         /* Hides nav on phone */
-    @media (max-width: 600px) {header nav {display: none;}}
 
     /* Hero */
     .hero{background:var(--bg-alt); border-bottom:1px solid #eadfc5}
@@ -149,28 +145,10 @@
     .tag{font-size:.8rem; padding:4px 8px; border:1px solid var(--usc-cardinal); color:var(--usc-cardinal); border-radius:var(--radius); background:#fff}
 
     /* Person photo (optional) */
-    .person-photo {
-  width: 100%;          /* fill the card width on mobile */
-  height: auto;         /* keep aspect ratio */
-  max-width: 235px;     /* don’t let it get too huge on desktop */
-  border-radius: var(--radius);
-  object-fit: cover;
-  margin-bottom: 10px;
-  background:#f3f4f6;
-  display:block;
-}
-
-/* Extra breathing room in the header on mobile */
-@media (max-width: 600px) {
-  header .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .hero .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
+    .person-photo{
+      width:235px; height:235px; object-fit:cover; border-radius:var(--radius);
+      display:block; margin-bottom:10px; background:#f3f4f6; /* neutral bg while loading */
+    }
 
     /* Events */
     .event-title{color:var(--usc-cardinal); font-weight:700; margin:0 0 6px}
@@ -253,30 +231,29 @@
           <p class="p" id="hero-summary">Welcome to the homepage of the RTG Mathematics Summer Research Program (MSRP) at USC. This is an annual summer research program aimed at outstanding undergraduates interested in differential geometry, topology, representation theory and/or combinatorics. The program will consist of two phases.</p>
 
         <ul>
-         <li><b>Pre Program.</b> A three month pre-program from early April to early July. This will consist of assigned background reading and bi-weekly discussions with a graduate student mentor over Zoom.</li>
-         <li><b>Main Program.</b> An eight week research program from early July to late August at USC, consisting of guided research in groups of two, under the mentorship of an RTG graduate fellow and an RTG postdoctoral scholar. Each group will be expected to produce a project report or a research article.</li>
+         <li><b>Pre Program.</b> A pre-program from early April to early June. This will consist of assigned background reading and bi-weekly discussions with a graduate student mentor over Zoom.</li>
+         <li><b>Main Program.</b> A seven week research program from late June to mid August at USC, consisting of guided research in groups of two, under the mentorship of an RTG graduate fellow and an RTG postdoctoral scholar. Each group will be expected to produce a project report or a research article.</li>
        </ul>
 
 
-        <p>The program will admit <b>four</b> undergraduate participants from universities across the United States and <b>up to four</b> additional undergraduate participants who currently attend USC. Please note that
+        <p>The program will admit a core group undergraduate participants from universities across the United States and <b>up to four</b> additional undergraduate participants who currently attend USC. Please note that
         <ul>
          <li><b>USC participants</b> must also apply for funding through the USC SURF Program upon acceptance.</li>
          <li><b>Non-USC partipants</b> will be funded by the USC RTG project and must be citizens, nationals, or permanent residents of the United States or its territories and possessions.</li>
        </ul>
-     We are gratefully supported by the National Science Foundation under award DMS-2446019. </p>
+     We are gratefully supported by the National Science Foundation under award DMS-2446019 and by USC Dornsife College of Arts and Sciences. </p>
         </div>
         <aside class="card" id = "title-card" aria-labelledby="news-title">
           <h3 id="news-title">How to apply to the MSRP</h3>
           <p>All applicants must submit the following materials to MathPrograms.</p>
           <ul>
-          <li>Two recommendation letters.</li>
+          <li> Up to 2 recommendation letters.</li>
           <li>An (unofficial) transcript.</li>
-          <li>A three paragraph statement on the applicants math interests.</li>
+          <li>A short (up to 5 sentences) summary of math interests and prior research experience.</li>
           </ul>
-          Applicants will also be asked to specify their preferences with regard to specific potential projects.
-
-          <p>The MathPrograms application will open in November. <b> The application deadline is February 1st. </b></p>
-          <a class="btn btn-outline" href="#events" role="button" aria-label="Jump to upcoming events">Apply Through MathPrograms</a>
+          We expect to contact admitted applicants with program admissions decisions in mid March.
+          <p> <b> The application deadline for the 2026 program is February 15th. </b></p>
+          <a class="btn btn-outline" href="https://www.mathprograms.org/db/programs/1843" role="button" aria-label="Jump to upcoming events">Apply Through MathPrograms</a>
         </aside>
       </div>
     </section>
@@ -421,9 +398,10 @@
 
     // ---------- Load all content ----------
     Promise.all([
-      loadJSON('data/people.json', FALLBACK.people),
-      loadJSON('data/events.json', FALLBACK.events),
-      loadJSON('data/msrp_projects.json', FALLBACK.publications),
+      loadJSON('people.json', FALLBACK.people),
+      loadJSON('events.json', FALLBACK.events),
+      loadJSON('opportunities.json', FALLBACK.opportunities),
+      loadJSON('publications.json', FALLBACK.publications),
       loadText('activities.md', FALLBACK.activitiesMd),
     ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
       const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
@@ -680,6 +658,3 @@ function renderEvents(events){
   </script>
 </body>
 </html>
-
-
-
