@@ -477,11 +477,11 @@
 
     // ---------- Load all content ----------
     Promise.all([
-      loadJSON('people.json', FALLBACK.people),
-      loadJSON('events.json', FALLBACK.events),
-      loadJSON('opportunities.json', FALLBACK.opportunities),
-      loadJSON('publications.json', FALLBACK.publications),
-      loadText('activities.md', FALLBACK.activitiesMd),
+      loadJSON('data/people.json', FALLBACK.people),
+      loadJSON('data/events.json', FALLBACK.events),
+      loadJSON('data/opportunities.json', FALLBACK.opportunities),
+      loadJSON('data/publications.json', FALLBACK.publications),
+      loadText('data/activities.md', FALLBACK.activitiesMd),
     ]).then(([peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes])=>{
       const usedFallback = [peopleRes, eventsRes, oppsRes, pubsRes, activitiesRes].some(r=>r.from==='fallback');
       if(usedFallback) safe($('#defaults-indicator'), el => el.style.display='block');
@@ -773,4 +773,5 @@ function renderEvents(events){
   </script>
 </body>
 </html>
+
 
