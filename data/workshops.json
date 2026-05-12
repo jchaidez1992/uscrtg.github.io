@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "start": "2025-03-03",
+    "end": "2025-03-15",
+    "title": "RTG Workshop on Seiberg-Witten Invariants And Homotopy Theory",
+    "where": "USC Mathematics Department",
+    "type": "Workshop",
+    "link": "#",
+    "desc": "This mini-workshop is focused on exciting current developments at the interface of homotopy theory and Seiberg-Witten theory. This includes recent work resolving a conjecture of Donaldson using family Bauer-Furuta invariants and recent work reformulating the Bauer-Furuta invariants via the six-functor formalism in higher category theory. Mini-workshop activities include a double-header talk series (Mon 3/9), intensive research with workshop participants and lunches for career development for junior partipants.",
+    "participants": [
+      "Julian Chaidez (USC)",
+      "Anubhav Mukherjee (Princeton)",
+      "Takumi Maegawa (Tokyo)",
+      "Peter Haine (USC)",
+      "Baran Cetin (USC)",
+      "Yijie Pan (USC)",
+      "Michael Huang (USC)",
+      "Zijian Rong (USC)"
+    ]
+  }
+]
