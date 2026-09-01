@@ -2,7 +2,7 @@
   {
     "start": "2025-03-03",
     "end": "2025-03-15",
-    "title": "RTG Workshop on Seiberg-Witten Invariants And Homotopy Theory",
+    "title": "RTG Mini-Workshop on Seiberg-Witten Invariants And Homotopy Theory",
     "where": "USC Mathematics Department",
     "type": "Workshop",
     "link": "#",
@@ -15,6 +15,24 @@
       "Baran Cetin (USC)",
       "Yijie Pan (USC)",
       "Michael Huang (USC)",
+      "Zijian Rong (USC)"
+    ]
+  },
+    {
+    "start": "2025-04-15",
+    "end": "2025-04-17",
+    "title": "RTG Mini-Workshop on Microlocal Sheaf Theory",
+    "where": "USC Mathematics Department",
+    "type": "Workshop",
+    "link": "#",
+    "desc": "This mini-workshop is focused on recent developments in micro-local sheaf theory and symplectic geometry. Mini-workshop activities include a double-header talk series (Weds 4/15), intensive research with workshop participants and lunches for career development for junior partipants.",
+    "participants": [
+      "Sheel Ganatra (USC)",
+      "Vivek Shende (Syddansk)",
+      "Tatsuki Kuwagaki (Kyoto)",
+      "Wenyuan Li (USC)",
+      "Eric Kilgore (USC)",
+      "Li Gu (USC)",
       "Zijian Rong (USC)"
     ]
   }
